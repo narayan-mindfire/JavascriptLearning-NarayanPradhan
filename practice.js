@@ -130,3 +130,23 @@ for(const [idx, val] of itr) console.log(`${idx} : ${val}`);
 const strarr = ["narayan", "biplab", "aniket", "ajit", "suraj", "cheeranjib"]
 const chararr = [...strarr[0], ...strarr[1], ...strarr[2]]
 console.log(chararr)
+
+console.log("----------loops output---------")
+//the for of loop, loops through the values of an iterable,
+//the for in loop loops through the properties (keys) of an object
+
+//using for in for an array
+let val = ""
+for (let it in strarr) val+=it
+console.log(val)
+
+//Array.forEach()
+numb= [45, 4, 9, 16, 25];
+
+let txt = "";
+numb.forEach(myFunction);
+
+function myFunction(value) {
+  txt += value;
+}
+console.log(txt)
