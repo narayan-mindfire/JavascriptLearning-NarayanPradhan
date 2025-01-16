@@ -1,6 +1,6 @@
 // Shopping Cart
 console.log()
-//input -> keeping it global so that it can be accessed with reference
+//input -> keeping it global so that it can be accessed with reference(to make changes to the original array object)
 let cart = [
     { name: "Apple", price: 120, quantity: 3 },
     { name: "Milk", price: 60, quantity: 2 },
@@ -9,12 +9,29 @@ let cart = [
 
   //functionality to display the current cart
   function displayCart(){
+    if(!cart.length){
+        console.log("Your cart is empty")
+        return
+    }
     for(let item of cart)
         console.log(`name : ${item.name}  price : ${item.price} quantity : ${item.quantity}`)
   }
 
-//functionality to add quantity
+//functionality to add item
 function addItem(name, price, qty){
+    if(typeof(price) !== "number" || typeof(qty) !== "number"){
+        console.log("Invalid item type, please enter valid numbers")
+        return
+    }
+    if(price < 0 || qty < 0 || qty-Math.floor(qty) !== 0){
+        console.log("Invalid item quantity or price")
+        return
+    }
+    //checking if item with the same name already exists
+    if(cart.some(item => item.name === name)){
+        console.log(`Item already exists in your cart, consider updating item count for ${name}`)
+        return
+    }
     var tempObj = {}
     tempObj.name = name
     tempObj.price = price
@@ -24,28 +41,33 @@ function addItem(name, price, qty){
 
 //functionality to update quantity
 function updateQty(name, newQty){
-    let found = false
-    for(let item of cart)
-        if(item.name === name) {
-            found = true
-            item.quantity = newQty;
-            console.log(`Item updated successfully`)
-            return;
-        }
-    console.log(`Item with the name : ${name} was not found in your cart!`)
+    if(newQty < 0 || newQty - Math.floor(newQty) !== 0){
+        console.log("Quantity provided is invalid, enter positive integer")
+        return
+    }
+    let idx = cart.findIndex(item=>item.name === name)
+    if(idx === -1){
+        console.log(`Item with the name : ${name} was not found in your cart!`)
+    }else{
+        cart[idx].quantity = newQty
+        console.log(`Item quantity for ${name} is updated successfully`)
+    }
     console.log()
 }
 
 // functionality to remove an item from cart
 function removeItemFromCart(name){
-    for(let i = 0; i<cart.length; i++){
-        if(cart[i].name === name){
-            cart.splice(i, 1)
-            console.log(`Item is successfully removed from cart`)
-            return;
-        }
+    if(!cart.length){
+        console.log("No items in your cart!")
+        return
     }
-    console.log(`Item with the name : ${name} was not found in your cart!`)
+    let removeIndex = cart.findIndex(item => item.name === name)
+    if(removeIndex === -1){
+        console.log(`Item with the name : ${name} was not found in your cart!`) 
+    }else{
+        cart.splice(removeIndex, 1);
+        console.log(`Item ${name} removed successfully`)
+    }
 }
 
 // functionality to calculate the total price
@@ -54,6 +76,7 @@ function totalPrice(){
     for(let item of cart) res += item.price*item.quantity
     return res
 }
+
 //displaying the cart
 console.log("displaying the cart")
 displayCart()

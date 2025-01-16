@@ -150,3 +150,8 @@ function myFunction(value) {
   txt += value;
 }
 console.log(txt)
+
+//strings
+console.log("----------- starting with string -----------")
+// template strings / template literals -> written within `` , 
+//template literals allow multiline strings too
