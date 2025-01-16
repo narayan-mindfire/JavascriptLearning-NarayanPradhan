@@ -155,3 +155,35 @@ console.log(txt)
 console.log("----------- starting with string -----------")
 // template strings / template literals -> written within `` , 
 //template literals allow multiline strings too
+let str = "this is a normal string"
+//to extract teh position of strings charAt(), at() at allows negative index (find characters from behind like in python, -1 is the last index
+console.log(str.at(-1))
+//string slice -> the upper bound is excluded
+console.log(str.slice(0, 2))
+//string substr -> similar to slicing returns the substring, takes param start index and length of the substring needed
+//supports case changing techniques like: .toUpperCase() & toLowerCase()
+//trim removes spaces from both the ends, trimStart() and trimEnd() from each side of the string
+
+//replacing part of the string: use the replae(old, new) 
+console.log(str.replace("anormal", "abnormal")) //wont make any change if the old string/substring is not foudn in the string
+//replace is case sensitive, make use of /i flag to make case insensitive match
+console.log(str.replace(/noRmal/i, "abnormal"))
+
+// regex flags that can be used -> /i is to make case insensitive
+//                                 /g is to make it find and replace all the matching substrings in the stirng -> also use replaceAll()
+// strins in js support splitting using delimeter(mandatory)
+let strarr1 = str.split(" ")
+console.log(strarr1)
+
+//just like findIndex for arrays we have indexOf for strings where it returns the first index of the starting of a substring
+//if it is present in the string or else -1
+//lastIndexOf() method returns the index of last occurence of the substring if found
+//these take another argument if given the start position of search(left -> right for findIndex and otherwise for the other method)
+console.log(str.lastIndexOf('normal'))
+//there is another method search which is similar to indexOf but can take in regex
+//string matching
+let text = "The rain in SPAIN stays mainly in the plain";
+text.match("ain");
+
+//includes() funciton returns a boolean value of the presence of a substring in a string   
+console.log(text.includes("ain", 23)) //starts searching from index 23
