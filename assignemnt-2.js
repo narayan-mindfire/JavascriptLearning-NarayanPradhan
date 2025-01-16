@@ -14,7 +14,7 @@ let cart = [
         return
     }
     for(let item of cart)
-        console.log(`name : ${item.name}  price : ${item.price} quantity : ${item.quantity}`)
+        console.log(`name : ${item.name}  price : ${item.price} quantity : ${item.quantity} subTotal : ${item.quantity * item.price}`)
   }
 
 //functionality to add item
