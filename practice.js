@@ -187,3 +187,6 @@ text.match("ain");
 
 //includes() funciton returns a boolean value of the presence of a substring in a string   
 console.log(text.includes("ain", 23)) //starts searching from index 23
+
+//javascript numbers; 
+console.log(typeof("1000"-"100"))
