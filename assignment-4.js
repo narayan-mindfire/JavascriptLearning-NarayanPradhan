@@ -21,31 +21,37 @@ const printSales = (data) =>{
     console.log("-".repeat(70))
     for (let item of data) console.log(`${item.id}`.padEnd(10)+ `${item.date}`.padEnd(20)+`${item.amount}`.padEnd(20)+`${item.category}`)
 }
-
+//function to filter data by data category
 const filterData = (cat) => {
     const res = data.filter((val) => val.category === cat)
     return res
 }
+//function to find the total sales by category
 const totalSalesCategory = (cat) => {
     const res = data.filter((val)=> val.category === cat).reduce((acc, val) => acc+=Number(val.amount), 0)
     return res
 }
+//function to find total sales by month
 const totalSalesMonth = (month) => {
     const res = data.filter((val)=>Number(val.date.split('-')[1]) === month).reduce((acc, val) => acc+Number(val.amount), 0)
     return res
 }
+//funciton to find the total sales in a given year
 const totalSalesYear = (year) => {
     const res = data.filter((val)=>Number(val.date.split('-')[0]) === year).reduce((acc, val) => acc+Number(val.amount), 0)
     return res;
 }
+//function to find the highest sales amount in the dataset
 const highestSalesAmount = (data) => {
     const res = data.reduce((acc, val) => acc = Math.max(acc, val.amount), -Infinity);
     return res;
 }
+//function to find the lowest sales amount in the dataset
 const lowestSalesAmount = (data) => {
     const res = data.reduce((acc, val) => acc = Math.min(acc, val.amount), Infinity)
     return res;
 }
+//function to print the data sorted by date  
 const printSorted = (data) => {
     printSales(data.toSorted((a, b)=> a.date.localeCompare(b.date)))
 }
