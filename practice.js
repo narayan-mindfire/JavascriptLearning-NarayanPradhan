@@ -85,7 +85,6 @@ let arrobj = [
     {namae : "ajit", age : 18},
     {namae : "suraj", age : 43},
 ]
-
 console.log(arrobj.toSorted((ob1, ob2)=> ob1.age - ob2.age))
 //sorting by multiple fields (I want to sort alphabeticall if the ages match) -> make use of s1.localeCompare(s2) -> -1 if s1 comes before s2 
 //+1 if comes after else 0
