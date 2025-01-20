@@ -189,3 +189,31 @@ console.log(text.includes("ain", 23)) //starts searching from index 23
 
 //javascript numbers; 
 console.log(typeof("1000"-"100"))
+
+//maps in js
+//maps are key value pairs which are declared like; 
+
+let mp = new Map([
+    ['name' , "Narayan"],
+    ['age', 34],
+    ['course', 'Mathematics'],
+    ['score', 34]
+])
+mp.set("interest", "learning") //set method for maps is used to set exisiting values
+//or editing already existing pairs
+console.log(mp)
+console.log(typeof(mp))
+
+// maps have various functionalities like: "has" is to check if element/key is present 
+// .clear() to delete all the items in the map,
+// .delete(key) to delete a particular pair
+// .get() to find the value of a particular element value
+//maps also come with a size property (although its object and objects dont have one)
+//maps are iterable
+
+for(let [key, val] of mp) {
+    console.log(`key: ${key}, val : ${val}`)
+}
+let text1 = ""
+for(const [x, y] of mp.entries()) text1 += x+" ";
+console.log(text1)
